@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="\app" t="IncludeRecursive" />
-    <e p="\f20fd7a8" t="IncludeRecursive" />
-    <e p="C:\Users\ivane\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\ivane\.Rider2018.2\system\resharper-host\Local\Transient\ReSharperHost\v182\SolutionCaches\_SimpleUnityProject.-1802560572.00" t="ExcludeRecursive" />
-    <e p="C:\Users\ivane\Documents\Projects\SimpleUnityProject\SimpleUnityProject" t="IncludeRecursive">
-      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
-      <e p="Library" t="ExcludeRecursive" />
+    <e p="C:\Users\ivane\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ivane\.Rider2019.3\system\resharper-host\Local\Transient\ReSharperHost\v193\SolutionCaches\_SimpleUnityProject.-1802560572.00" t="ExcludeRecursive" />
+    <e p="C:\Users\ivane\Documents\Projects\SimpleUnityProject\SimpleUnityProject" t="IncludeFlat">
       <e p="SimpleUnityProject.sln" t="IncludeFlat" />
-      <e p="Temp" t="ExcludeRecursive" />
     </e>
   </component>
 </project>
