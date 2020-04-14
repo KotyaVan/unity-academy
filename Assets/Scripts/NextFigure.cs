@@ -42,6 +42,8 @@ public class NextFigure : MonoBehaviour
                 break;
                 
         }
+        
+        _figure.transform.position = new Vector3(4, 0, 0);
     }
 
     public GameObject GetFigureForFalling()

@@ -24,6 +24,7 @@ public class FallingFigure : MonoBehaviour
 		else
 		{
 			_figure = Instantiate(_nextFigure.GetFigureForFalling());
+			_figure.transform.position = new Vector3(0, 0, 0);
 			_nextFigure.UpdateNextFigure();
 		}
 
