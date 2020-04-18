@@ -9,6 +9,7 @@ public class StickHeroController : MonoBehaviour
     [SerializeField] private StickHeroPlatform[] m_Platforms;
 
     private int counter; //это счетчик платформ
+    private int score;
 
     private enum EGameState
     {
@@ -86,10 +87,10 @@ public class StickHeroController : MonoBehaviour
         currentGameState = EGameState.Movement;
         StickHeroPlatform nextPlatform = m_Platforms[counter + 1];
         //находим минимальную длину стика для успешного перехода
-        float targetLenght = nextPlatform.transform.position.x - m_Stick.transform.position.x;
-        float platformSize = nextPlatform.GetPlatformSize();
+        float targetLenght = nextPlatform.transform.position.x - m_Stick.transform.position.x;//от стика до платформы
+        float platformSize = nextPlatform.GetPlatformSize();//размер след платформы
         float min = targetLenght - platformSize * 0.5f;
-        min -= m_Player.transform.localScale.x * 0.9f;
+        // min -= m_Player.transform.localScale.x; //i think it's bad idea
 
         //находим максимальную длину стика для успешного перехода
         float max = targetLenght + platformSize * 0.5f;
@@ -97,13 +98,14 @@ public class StickHeroController : MonoBehaviour
         //при успехе переходим в центр платформы, иначе падаем
         if (lenght < min || lenght > max)
         {
-            float targetPosition = m_Stick.transform.position.x + lenght + m_Player.transform.localScale.x;
+            float targetPosition = m_Stick.transform.position.x + lenght + m_Player.transform.localScale.x * 0.5f;
             m_Player.StartMovement(targetPosition, true);
         }
         else
         {
             float targetPosition = nextPlatform.transform.position.x;
             m_Player.StartMovement(targetPosition, false);
+            IncrementScore();
         }
     }
 
@@ -117,6 +119,11 @@ public class StickHeroController : MonoBehaviour
     public void ShowScores()
     {
         currentGameState = EGameState.Defeate;
-        print("Game Over");
+        print("Game Over, your score " + score);
+    }
+
+    private void IncrementScore()
+    {
+        score++;
     }
 }
