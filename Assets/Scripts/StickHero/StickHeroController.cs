@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class StickHeroController : MonoBehaviour
 {
     [SerializeField] private StickHeroStick m_Stick;
     [SerializeField] private StickHeroPlayer m_Player;
-    [SerializeField] private StickHeroPlatform[] m_Platforms;
+    [SerializeField] private StickHeroPlatform m_BasePlatform;
 
     private int counter; //это счетчик платформ
     private int score;
+    private List<StickHeroPlatform> platforms = new List<StickHeroPlatform>();
 
     private enum EGameState
     {
@@ -28,7 +31,10 @@ public class StickHeroController : MonoBehaviour
         currentGameState = EGameState.Wait;
         counter = 0;
 
-        m_Stick.ResetStick(m_Platforms[0].GetStickPosition());
+        platforms.Add(m_BasePlatform);
+        GeneratePlatform();
+        
+        m_Stick.ResetStick(platforms[0].GetStickPosition());
     }
 
 
@@ -85,7 +91,7 @@ public class StickHeroController : MonoBehaviour
     public void StartPlayerMovement(float lenght)
     {
         currentGameState = EGameState.Movement;
-        StickHeroPlatform nextPlatform = m_Platforms[counter + 1];
+        StickHeroPlatform nextPlatform = platforms[counter + 1];
         //находим минимальную длину стика для успешного перехода
         float targetLenght = nextPlatform.transform.position.x - m_Stick.transform.position.x;//от стика до платформы
         float platformSize = nextPlatform.GetPlatformSize();//размер след платформы
@@ -106,6 +112,7 @@ public class StickHeroController : MonoBehaviour
             float targetPosition = nextPlatform.transform.position.x;
             m_Player.StartMovement(targetPosition, false);
             IncrementScore();
+            GeneratePlatform();
         }
     }
 
@@ -113,7 +120,7 @@ public class StickHeroController : MonoBehaviour
     {
         currentGameState = EGameState.Wait;
         counter++;
-        m_Stick.ResetStick(m_Platforms[counter].GetStickPosition());
+        m_Stick.ResetStick(platforms[counter].GetStickPosition());
     }
 
     public void ShowScores()
@@ -125,5 +132,14 @@ public class StickHeroController : MonoBehaviour
     private void IncrementScore()
     {
         score++;
+    }
+
+    private void GeneratePlatform()
+    {
+        var component = Instantiate(m_BasePlatform);
+        var lastPlatformPosition = platforms[platforms.Count - 1].transform.position;
+        var lastPlatformWidth = platforms[platforms.Count - 1].transform.localScale.x;
+        component.transform.position = new Vector3(lastPlatformPosition.x + Random.Range(lastPlatformWidth / 2 + 1.5f, lastPlatformWidth / 2 + 4f), lastPlatformPosition.y, lastPlatformPosition.z);
+        platforms.Add(component);
     }
 }
