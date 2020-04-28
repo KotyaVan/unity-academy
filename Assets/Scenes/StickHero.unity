@@ -384,11 +384,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Stick: {fileID: 1394944862}
   m_Player: {fileID: 1808328052}
-  m_Platforms:
-  - {fileID: 445355205}
-  - {fileID: 2105075856}
-  - {fileID: 816493225}
-  - {fileID: 1805607994}
   m_BasePlatform: {fileID: 445355205}
 --- !u!4 &584757148
 Transform:
@@ -421,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &816493225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1805607994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,7 +1014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2105075856
 MonoBehaviour:
   m_ObjectHideFlags: 0
