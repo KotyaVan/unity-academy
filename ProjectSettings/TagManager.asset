@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 
@@ -40,4 +40,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 2369239661
+    locked: 0
+  - name: Enviroment
+    uniqueID: 2957042259
+    locked: 0
+  - name: Characters
+    uniqueID: 1089620885
+    locked: 0
+  - name: Effects
+    uniqueID: 1050451435
+    locked: 0
+  - name: UI
+    uniqueID: 678976433
     locked: 0
