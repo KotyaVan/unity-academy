@@ -6,6 +6,8 @@ namespace DefaultNamespace
     public class Player : MonoBehaviour, IPlayer, IHitBox
     {
         [SerializeField] private int health = 1;
+        [SerializeField] private Animator animator;
+        private PlayerWeapon[] weapons;
         public void RegisterPlayer()
         {
             GameManager manager = FindObjectOfType<GameManager>();
@@ -26,9 +28,20 @@ namespace DefaultNamespace
             RegisterPlayer();
         }
 
+        private void Start()
+        {
+            weapons = GetComponents<PlayerWeapon>();
+            InputManager.FireAction += OnAttack;
+        }
+
+        private void OnDestroy()
+        {
+            InputManager.FireAction -= OnAttack;
+        }
+
         public int Health
         {
-            get => Health;
+            get => health;
             private set
             {
                 health = value;
@@ -46,6 +59,18 @@ namespace DefaultNamespace
         public void Die()
         {
             print("Player died");
+        }
+
+        private void OnAttack(string axis)
+        {
+            foreach (var weapon in weapons )
+            {
+                if (weapon.Axis == axis)
+                {
+                    weapon.SetDamage();
+                    animator.SetTrigger("Attack");
+                }
+            }
         }
     }
 }

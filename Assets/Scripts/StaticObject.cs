@@ -79,7 +79,7 @@ namespace DefaultNamespace
 
         public void Die()
         {
-            print("Enemy died");
+            Destroy(gameObject);
         }
     }
 }
