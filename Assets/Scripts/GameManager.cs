@@ -25,7 +25,19 @@ public class GameManager : MonoBehaviour
 
     public IPlayer Player;
     public List<IEnemy> Enemies = new List<IEnemy>();
-    
+
+
+    private static int coins;
+    public static int Coins
+    {
+        get => coins;
+        set
+        {
+            coins = value;
+            Debug.Log("Coins" + coins);
+        }
+        
+    }
     
     public static Action<GameState> GameStateAction;
 

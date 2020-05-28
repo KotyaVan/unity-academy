@@ -6,7 +6,7 @@ namespace DefaultNamespace
     public class Player : MonoBehaviour, IPlayer, IHitBox
     {
         [SerializeField] private int health = 1;
-        [SerializeField] private Animator animator;
+        [SerializeField] public Animator animator;
         private PlayerWeapon[] weapons;
         public void RegisterPlayer()
         {
